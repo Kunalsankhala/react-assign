@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redux</title>
+    <style>
+        .q {
+            margin: 15px;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: rgb(82, 235, 197);
+            color: black;
+            font-size: 30px;
+        }
+        .a{
+            margin: 15px;
+            padding: 15px;
+           
+            background-color: rgb(82, 235, 197);
+            color: black;
+            font-size: 18px;
+        }
+        li{
+            padding: 10px 10px 10px 40px;
+            background-color: rgb(238, 238, 238);
+            border-radius: 10%;
+            
+        }
+        pre{
+            background-color: black;
+            color: white;
+            margin: 20px;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <p class="q">1. what is redux?</p>
+    <p class="a">Redux is an open-source JavaScript library that manages and centralizes application state. It's based on the Model-View-Controller (MVC) software design pattern, which separates an application into three components: </p>
+    <li>Model: Data-related logic</li><li>View: UI logic for an application</li><li>Controller: Interface between Model and View</li>
+
+    <p class="a">Redux is often used with libraries like React or Angular to build user interfaces. It helps developers write applications that are consistent, easy to test, and run in different environments, such as client, server, and native. Redux allows developers to manage an app's state in one place, making changes more predictable and traceable.</p>
+
+    <p class="q">2. What is Redux Thunk used for?</p>
+    <p class="a">Redux Thunk is a middleware for Redux that allows you to write action creators that return a function instead of an action object. This function can perform asynchronous operations, such as fetching data from an API, and dispatch actions based on the result of those operations.  <br>  Here are some common use cases for Redux Thunk:    </p>
+    <li>Asynchronous Actions: Redux Thunk is commonly used to handle asynchronous actions in Redux applications. For example, you can dispatch an action to initiate a data fetch operation, and then dispatch additional actions based on the result of that operation (e.g., success action or failure action).</li>
+    <li>API Requests: Thunks are often used to encapsulate API requests. They allow you to dispatch actions before, during, and after the API request, providing a centralized place to manage async logic.</li>
+    <li>Complex Action Logic: Thunks can contain complex logic before dispatching actions. For example, you might need to conditionally dispatch different actions based on the current state or user input.</li>
+    <li>Side Effects: Thunks are suitable for handling side effects, such as logging, analytics, or routing based on the Redux state.</li>
+    <li>Chaining Actions: Thunks enable you to dispatch multiple actions in sequence or conditionally based on the outcome of previous actions.</li>
+    <p class="a">Overall, Redux Thunk provides a flexible and powerful mechanism for handling asynchronous operations and side effects in Redux applications while maintaining the predictability and immutability principles of Redux.</p>
+
+<p class="q">3. What is Pure Component? When to use Pure Component over
+Component?</p>
+<p class="a">A Pure Component in React is a component that implements the 'shouldComponentUpdate' lifecycle method with a shallow prop and state comparison. This means that a Pure Component will only re-render if its props or state have changed.</p>
+<li>Performance Optimization: Pure Components are useful for optimizing performance, especially in scenarios where a component renders frequently but its props or state rarely change. By implementing a shallow comparison in shouldComponentUpdate, React can skip unnecessary re-renders, thus improving performance.
+</li>
+<li>Immutable Data: Pure Components work best with immutable data structures, where changes result in new references. Since Pure Components compare props and state by reference, using immutable data ensures accurate comparison and prevents unnecessary re-renders.
+</li>
+<li>Stateless Components: Pure Components are a good fit for stateless functional components or components that primarily rely on props for rendering. Since stateless components don't have internal state, their rendering depends solely on props, making them ideal candidates for pure rendering optimization.
+</li>
+<li>Simple Comparison Logic: Pure Components are suitable for components with simple prop and state comparison logic. If the comparison logic is straightforward and shallow, implementing shouldComponentUpdate in a Pure Component is simpler and more efficient than writing custom shouldComponentUpdate logic in a regular Component.
+</li>
+<li>Maintaining Component State: If a component's state is managed independently of its parent components or external state management libraries (e.g., Redux), using a Pure Component can help ensure that the component only re-renders when its internal state changes, rather than relying on external factors.
+</li>
+
+<p class="q">4. What is the second argument that can optionally be passed
+tosetState and what is its purpose?</p>
+<p class="a"> The second argument that can optionally be passed to the setState function in React is a callback function. This callback function is invoked after the state has been updated and the component has re-rendered. <br> Here's how you can use the callback function with setState:  </p>
+
+<pre>
+this.setState({ 
+  // new state 
+}, () => {
+  // callback function
+  // This function is invoked after the state has been updated and the component has re-rendered
+  console.log('State has been updated!');
+});
+</pre>
+
+<p class="a">The purpose of the callback function is to perform actions that depend on the updated state or need to be executed after the state update has been applied and the component has re-rendered.<br> Common use cases for the callback function include:
+</p>
+
+<li>Accessing Updated State: You can use the callback function to access the updated state after it has been applied. This can be useful for performing calculations, conditional rendering, or triggering side effects based on the new state.
+</li>
+<li>Performing Side Effects: If you need to perform any actions that depend on the updated state, such as making API calls, updating the DOM, or triggering animations, you can do so in the callback function. This ensures that these actions occur after the state has been updated and the component has re-rendered, avoiding race conditions or stale data.</li>
+<li>Synchronizing State Updates: In some cases, you may need to update the state multiple times in quick succession. By using the callback function, you can ensure that subsequent state updates are performed after the previous updates have been applied and the component has re-rendered, maintaining consistency in the component's state.
+</li>
+
+<p class="a">Overall, the callback function provided as the second argument to setState allows you to handle logic that depends on the updated state in a synchronous and predictable manner, ensuring that your component behaves as expected after state updates.</p>
+
+
+
+</body>
+</html>
